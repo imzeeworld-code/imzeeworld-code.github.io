@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Henry Tallen — Independent App Developer. Creator of World of Discoveries. Building mobile apps, AI assistants, and innovative tools from scratch.">
+<meta name="keywords" content="Henry Tallen, app developer, World of Discoveries, Android apps, AI apps, mobile developer, Wise AI, Zee, independent developer">
+<meta name="author" content="Henry Tallen">
+<meta property="og:title" content="Henry Tallen — App Developer">
+<meta property="og:description" content="Independent app developer behind World of Discoveries. Building AI-powered mobile apps.">
+<title>Henry Tallen — App Developer | World of Discoveries</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #c9a84c;
+    --gold-light: #f0d080;
+    --gold-dim: #7a6020;
+    --black: #050505;
+    --dark: #0d0d0d;
+    --dark2: #141414;
+    --dark3: #1c1c1c;
+    --text: #e8e0cc;
+    --text-dim: #8a8070;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--text);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+
+  /* NOISE TEXTURE OVERLAY */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* GOLD LINE TOP */
+  .top-line {
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 60px 24px;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-block;
+    border: 1px solid var(--gold-dim);
+    color: var(--gold);
+    font-family: 'Raleway', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    margin-bottom: 32px;
+    animation: fadeDown 0.8s ease both;
+  }
+
+  .hero-name {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(42px, 12vw, 80px);
+    font-weight: 900;
+    letter-spacing: 4px;
+    line-height: 1.05;
+    color: #fff;
+    animation: fadeDown 0.9s ease 0.1s both;
+  }
+
+  .hero-name span {
+    display: block;
+    background: linear-gradient(135deg, var(--gold-light), var(--gold), var(--gold-dim));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-title {
+    font-size: 13px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-top: 16px;
+    animation: fadeDown 1s ease 0.2s both;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    margin: 32px auto;
+    animation: fadeDown 1s ease 0.3s both;
+  }
+
+  .hero-desc {
+    max-width: 480px;
+    font-size: 15px;
+    line-height: 1.8;
+    color: var(--text-dim);
+    font-weight: 300;
+    animation: fadeDown 1s ease 0.4s both;
+  }
+
+  .hero-desc strong {
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    animation: fadeDown 1s ease 0.8s both;
+  }
+
+  .scroll-hint span {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+  }
+
+  .scroll-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    animation: bounce 1.5s infinite;
+  }
+
+  /* SECTION */
+  section {
+    position: relative;
+    z-index: 1;
+    padding: 80px 24px;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 9px;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(24px, 6vw, 36px);
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 32px;
+  }
+
+  /* ABOUT */
+  .about-text {
+    font-size: 15px;
+    line-height: 1.9;
+    color: var(--text-dim);
+    font-weight: 300;
+  }
+
+  .about-text p { margin-bottom: 16px; }
+
+  .about-text strong {
+    color: var(--text);
+    font-weight: 500;
+  }
+
+  /* APPS GRID */
+  .apps-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .app-card {
+    background: var(--dark2);
+    border: 1px solid #222;
+    border-left: 3px solid var(--gold-dim);
+    padding: 24px 20px;
+    transition: border-color 0.3s, transform 0.3s;
+    cursor: default;
+  }
+
+  .app-card:hover {
+    border-left-color: var(--gold);
+    transform: translateX(4px);
+    background: var(--dark3);
+  }
+
+  .app-card-name {
+    font-family: 'Cinzel', serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .app-card-tag {
+    display: inline-block;
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    border: 1px solid var(--gold-dim);
+    color: var(--gold-dim);
+    padding: 2px 8px;
+    margin-bottom: 10px;
+  }
+
+  .app-card-desc {
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--text-dim);
+    font-weight: 300;
+  }
+
+  /* SKILLS */
+  .skills-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .skill-pill {
+    border: 1px solid #2a2a2a;
+    background: var(--dark2);
+    color: var(--text-dim);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    transition: border-color 0.3s, color 0.3s;
+  }
+
+  .skill-pill:hover {
+    border-color: var(--gold-dim);
+    color: var(--gold);
+  }
+
+  /* CONTACT */
+  .contact-block {
+    background: var(--dark2);
+    border: 1px solid #222;
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .contact-block p {
+    font-size: 14px;
+    color: var(--text-dim);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+
+  .contact-block strong {
+    color: var(--gold);
+    font-weight: 500;
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid #1a1a1a;
+    padding: 32px 24px;
+    text-align: center;
+  }
+
+  .footer-brand {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    letter-spacing: 3px;
+    color: var(--gold-dim);
+    margin-bottom: 8px;
+  }
+
+  .footer-copy {
+    font-size: 11px;
+    color: #333;
+    letter-spacing: 1px;
+  }
+
+  /* GOLD LINE BOTTOM OF EACH SECTION */
+  .section-line {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #2a2a2a, transparent);
+    margin: 0 auto;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); opacity: 1; }
+    50% { transform: translateY(8px); opacity: 0.3; }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<div class="top-line"></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">World of Discoveries</div>
+  <h1 class="hero-name">
+    Henry<span>Tallen</span>
+  </h1>
+  <p class="hero-title">Independent App Developer</p>
+  <div class="hero-divider"></div>
+  <p class="hero-desc">
+    Building <strong>AI-powered mobile apps</strong> and innovative tools — one idea at a time. Founder of <strong>World of Discoveries</strong>.
+  </p>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-dot"></div>
+  </div>
+</div>
+
+<div class="section-line"></div>
+
+<!-- ABOUT -->
+<section class="reveal">
+  <p class="section-label">Who I Am</p>
+  <h2 class="section-title">About Me</h2>
+  <div class="about-text">
+    <p>I'm <strong>Henry Tallen</strong>, an independent app developer operating under the brand <strong>World of Discoveries</strong>. I build fully functional Android applications entirely from my phone — no desktop, no formal coding background, just vision, creativity and determination.</p>
+    <p>I specialize in crafting <strong>AI-powered tools</strong>, voice assistants, music players, browsers, and productivity apps — all designed with a distinctive <strong>dark, gold-accented aesthetic</strong> and polished user experience.</p>
+    <p>Every app I release starts as a single idea and becomes a complete product ready for the Play Store.</p>
+  </div>
+</section>
+
+<div class="section-line"></div>
+
+<!-- APPS -->
+<section class="reveal">
+  <p class="section-label">My Work</p>
+  <h2 class="section-title">Featured Apps</h2>
+  <div class="apps-grid">
+
+    <div class="app-card">
+      <div class="app-card-name">Wise AI</div>
+      <span class="app-card-tag">AI Chat Assistant</span>
+      <p class="app-card-desc">A calm, wise AI chat assistant powered by Groq. Features animated SVG visuals, keyword highlighting, typing indicators, and persistent chat history. Built with a distinctive personality.</p>
+    </div>
+
+    <div class="app-card">
+      <div class="app-card-name">Zee</div>
+      <span class="app-card-tag">Voice Assistant</span>
+      <p class="app-card-desc">A voice-controlled phone assistant with a floating draggable golden ball interface. Integrates Wikipedia, deep-links to apps, and features a full built-in toolset with personality-driven responses.</p>
+    </div>
+
+    <div class="app-card">
+      <div class="app-card-name">Zee Music Player</div>
+      <span class="app-card-tag">Music Player</span>
+      <p class="app-card-desc">Full-featured offline music player with a 5-band equalizer, lyrics support, sleep timer, and complete playlist management.</p>
+    </div>
+
+    <div class="app-card">
+      <div class="app-card-name">Zee Browser</div>
+      <span class="app-card-tag">Web Browser</span>
+      <p class="app-card-desc">A production-ready browser with tab management, voice search, bookmarks, history, and JavaScript bridge integration for APK deployment.</p>
+    </div>
+
+    <div class="app-card">
+      <div class="app-card-name">Tallen AI</div>
+      <span class="app-card-tag">Offline Assistant</span>
+      <p class="app-card-desc">A personal offline rule-based AI chat assistant with a bulletproof mobile touch implementation and a rich built-in knowledge base.</p>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-line"></div>
+
+<!-- SKILLS -->
+<section class="reveal">
+  <p class="section-label">What I Do</p>
+  <h2 class="section-title">Skills & Tools</h2>
+  <div class="skills-list">
+    <span class="skill-pill">Android App Dev</span>
+    <span class="skill-pill">HTML / CSS / JS</span>
+    <span class="skill-pill">AI Integration</span>
+    <span class="skill-pill">UI / UX Design</span>
+    <span class="skill-pill">Voice Assistants</span>
+    <span class="skill-pill">WebView / APK</span>
+    <span class="skill-pill">GitHub Pages</span>
+    <span class="skill-pill">Groq API</span>
+    <span class="skill-pill">Wikipedia API</span>
+    <span class="skill-pill">Mobile-First</span>
+    <span class="skill-pill">Dark UI Design</span>
+    <span class="skill-pill">Play Store</span>
+  </div>
+</section>
+
+<div class="section-line"></div>
+
+<!-- CONTACT -->
+<section class="reveal">
+  <p class="section-label">Get In Touch</p>
+  <h2 class="section-title">Contact</h2>
+  <div class="contact-block">
+    <p>I'm open to collaborations, feedback, and app ideas. If you want to connect with me or learn more about <strong>World of Discoveries</strong>, reach out.</p>
+    <p>📧 <strong>Available via GitHub</strong></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-brand">World of Discoveries</p>
+  <p class="footer-copy">© 2025 Henry Tallen. All rights reserved.</p>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+  reveals.forEach(r => observer.observe(r));
+</script>
+
+</body>
+</html>
